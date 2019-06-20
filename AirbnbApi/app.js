@@ -9,7 +9,7 @@ var loginRouter = require('./routes/login');
 var usuarioRouter = require('./routes/usuario');
 var anfitrionRouter = require('./routes/anfitrion');
 var departamentoRouter = require('./routes/departamento');
-var estadoRouter = require('./routes/estado');
+var estadosRouter = require('./routes/estados');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use('/login', loginRouter);
 app.use('/usuario', usuarioRouter);
 app.use('/anfitrion', anfitrionRouter);
 app.use('/departamento', departamentoRouter);
-app.use('/estado', estadoRouter);
+app.use('/estados', estadosRouter);
 /*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
