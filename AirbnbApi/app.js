@@ -10,6 +10,7 @@ var usuarioRouter = require('./routes/usuario');
 var anfitrionRouter = require('./routes/anfitrion');
 var departamentoRouter = require('./routes/departamento');
 var estadosRouter = require('./routes/estados');
+var amenidadRouter = require('./routes/amenidad');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/usuario', usuarioRouter);
 app.use('/anfitrion', anfitrionRouter);
 app.use('/departamento', departamentoRouter);
 app.use('/estados', estadosRouter);
+app.use('/amenidad', amenidadRouter);
 /*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

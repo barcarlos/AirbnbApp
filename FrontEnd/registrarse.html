@@ -22,30 +22,30 @@
 		<article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Registrate</h4>
             <p class="text-center">Crea una cuenta y empieza a buscar aventuras</p>
-            <form>
+            <form action="registro.php" method="post">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Nombre Completo" type="text">
+                <input  class="form-control" placeholder="Nombre Completo" type="text" name="nombre">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Correo" type="email">
+                <input  class="form-control" placeholder="Correo" type="email" name="correo">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-id-card"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Edad" type="text">
+                <input  class="form-control" placeholder="Edad" type="text" name="edad">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder=" Fecha nacimiento(AAAA-MM-DD)" type="text">
+                <input  class="form-control" placeholder=" Fecha nacimiento(AAAA-MM-DD)" type="text" name="fecha">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -57,7 +57,7 @@
                     <option value="2">+449</option>
                     <option value="3">+449</option>
                 </select>
-                <input name="" class="form-control" placeholder="Número de teléfono" type="text">
+                <input  class="form-control" placeholder="Número de teléfono" type="text" name="telefono">
             </div> <!-- form-group// -->
             <div class="form-group input-group" >
                 <div>
@@ -65,11 +65,11 @@
                     <span class="input-group-text"> <i class="fas fa-male"></i> </span>
                  </div>
                 </div>
-               <input class="radio" type="radio" name="gender" value="male"><div class="chckbx" style="margin-top: 3px;">Hombre</div>
+               <input class="radio" type="radio"  value="male" name="sexo"><div class="chckbx" style="margin-top: 3px;">Hombre</div>
                 <div>
                     <div class="input-group-prepend" style="margin-left: 65">
                     <span class="input-group-text"> <i class="fas fa-female"></i> </span>
-                   <input class="radio" type="radio" name="gender" value="female"><div class="chckbx" style="margin-top: 3px;">Mujer</div>
+                   <input class="radio" type="radio"  value="female" name="sexo"><div class="chckbx" style="margin-top: 3px;">Mujer</div>
                     </div>
                 </div>
             </div> <!-- form-group// -->
@@ -77,19 +77,19 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-location-arrow"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Dirección" type="text">
+                <input  class="form-control" placeholder="Dirección" type="text" name="direccion">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Estado" type="text">
+                <input  class="form-control" placeholder="Estado" type="text" name="estado">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-user-circle"></i> </span>
                 </div>
-                <select class="form-control">
+                <select class="form-control" name="tipo">
                     <option selected=""> Tipo de Perfil</option>
                     <option>Anfitrión</option>
                     <option>Huésped</option>
@@ -99,13 +99,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input class="form-control" placeholder="Crear contraseña" type="password">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                </div>
-                <input class="form-control" placeholder="Confirmar contraseña" type="password">
+                <input class="form-control" placeholder="Crear contraseña" type="password" name ="contrasena">
             </div> <!-- form-group// -->                                      
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block"> Crear cuenta  </button>

@@ -6,7 +6,7 @@
    <meta charset="UTF-8">
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,6 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="css/stylesNuevoAlojamiento.css">
 </head>
 <body>
+<?php
+include("services/apifunctions.php");
+include("services/resources.php"); //Export api URL?>
     <div class="container">
 	    <div class="d-flex justify-content-center h-100">
 		    <div class="card">
@@ -26,37 +29,45 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
-                            <input name="" class="form-control" placeholder="Nombre del Departamento" type="text" cols="32" rows="3">
+                            <input name="nombre" class="form-control" placeholder="Nombre del Departamento" type="text" cols="32" rows="3">
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend" style=" margin-bottom:  18px;">
                                 <span class="input-group-text"> <i class="fas fa-bars"></i> </span>
-                                <textarea class="form-control" placeholder="Descripción" name="" id="" cols="50" rows="2"></textarea>
+                                <textarea class="form-control" placeholder="Descripción" name="descripcion" id="" cols="50" rows="2"></textarea>
                             </div>
                             <div class="form-group input-group" >
                                 <div class="input-group-prepend" >
                                     <span class="input-group-text"> <i class="fas fa-location-arrow"></i> </span>
                                  </div>
-                                <input name="" class="form-control" placeholder="Dirección" type="text">
+                                <input name="direccion" class="form-control" placeholder="Dirección" type="text">
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
                                  </div>
-                                <input name="" class="form-control" placeholder="Estado" type="text">
+                                 <?php 
+                                $url = $apiurl . "estados/"; //concat the api url with the uri of the service
+                                $estados=getDataapi($url)
+                                 ?>
+                                 <select name="estado" class="custom-select" >
+                                    <?php for($i=0;$i<count($estados);$i++){?>
+                                    <option value="<?php echo $estados[$i]['id'] ;?>"><?php echo $estados[$i]['nombre']; ?> </option>
+                                    <?php } ?>
+                                </select>
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fas fa-dollar-sign"></i> </span>
                                 </div>
-                                <input class="form-control" placeholder="Precio por noche" type="text">
+                                <input class="form-control" name ="precio" placeholder="Precio por noche" type="text">
                             </div> <!-- form-group// -->
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fas fa-bed"></i> </span>
                                 </div>
-                                <select class="custom-select" style="max-width: 120px;">
-                                    <option selected="">Camas</option>
+                                <select name="camas" class="custom-select" style="max-width: 120px;">
+                                    <option disabled selected="">Camas</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -67,7 +78,7 @@
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-door-closed"></i> </span>
                                 </div>
-                                <select class="custom-select" style="max-width: 120px;">
+                                <select name="cuartos" class="custom-select" style="max-width: 120px;">
                                     <option selected="">Cuartos</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -77,7 +88,7 @@
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-bath"></i> </span>
                                 </div>
-                                <select class="custom-select" style="max-width: 120px;">
+                                <select name="banos" class="custom-select" style="max-width: 120px;">
                                     <option selected="">Baños</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -89,7 +100,7 @@
                                 <div class="input-group-prepend" style="margin-left: 60px;">
                                     <span class="input-group-text"> <i class="fas fa-plane-arrival"></i> </span>
                                 </div>
-                                <select class="custom-select" style="max-width: 140px;">
+                                <select name="checkin" class="custom-select" style="max-width: 140px;">
                                     <option selected="">Check-in</option>
                                     <option value="13">13:00</option>
                                     <option value="14">14:00</option>
@@ -106,7 +117,7 @@
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-plane-departure"></i> </span>
                                 </div>
-                                <select class="custom-select" style="max-width: 140px;">
+                                <select name="checkout" class="custom-select" style="max-width: 140px;">
                                     <option selected="">Check-out</option>
                                     <option value="8">8:00</option>
                                     <option value="9">9:00</option>
@@ -116,44 +127,25 @@
                                 </select>
                             </div> <!-- form-group// -->
                             <b class="tit">Servicios</b>
+                            <?php 
+                                $url = $apiurl . "amenidad/"; //concat the api url with the uri of the service
+                                $data=getDataapi($url)
+                            ?>
+                            <?php for($i=0;$i<count($data);$i++){?>
                             <div class="form-group input-group" >
-                               <input class="radio" type="radio" name="servicios" value="lavadora">
+                               <input class="radio" type="checkbox" name="checks[]" value="<?php echo $data[$i]["id"]?>">
                                    <div class="chckbx" style="margin-top: 3px;">
-                                       Lavadora
+                                       <?php echo $data[$i]["nombre"]?>
                                    </div>
                             </div> <!-- form-group// -->
-                            <div class="form-group input-group" >
-                                <input class="radio" type="radio" name="servicios" value="secadora">
-                                    <div class="chckbx" style="margin-top: 3px;">
-                                        Secadora
-                                    </div>
-                            </div>
-                            <div class="form-group input-group" >
-                                <input class="radio" type="radio" name="servicios" value="wi-fi">
-                                    <div class="chckbx" style="margin-top: 3px;">   
-                                        Wi-fi
-                                    </div>
-                            </div> <!-- form-group// -->
-                            <div class="form-group input-group" >
-                                <input class="radio" type="radio" name="servicios" value="tv">
-                                    <div class="chckbx" style="margin-top: 3px;">
-                                        Tv
-                                    </div>
-                            </div>
+                            <?php }?>
                             <label for="imagenes">
                                 <div class="imgn">
                                     <input id="Imagenes" name="Imagenes" class="input-file" type="file">
                                 </div>
-                                <div class="imgn">
-                                    <input id="Imagenes" name="Imagenes" class="input-file" type="file">
-                                </div>
-                                <div class="imgn">
-                                    <input id="Imagenes" name="Imagenes" class="input-file" type="file">
-                                </div>
-                                <div class="imgn">
-                                    <input id="Imagenes" name="Imagenes" class="input-file" type="file">
-                                </div>
-                            </label>
+                            <div>
+                                <input type="text" id="array" name="amenidad" >
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block"> Registrar alojamiento  </button>
                             </div> <!-- form-group// -->                                                          
@@ -164,4 +156,20 @@
 	    </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    $('[name="checks[]"]').click(function() {
+        
+    var arr = $('[name="checks[]"]:checked').map(function(){
+        return this.value;
+    }).get();
+    
+    var str = arr.join(',');
+    $("#array").val(str);
+    });
+
+    });
+    </script>
 </html>
