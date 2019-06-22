@@ -24,7 +24,7 @@ include("services/resources.php"); //Export api URL?>
 		    <div class="card">
 		        <article class="card-body mx-auto" style="max-width: 580px;">
                     <h4 class="card-title mt-3 text-center">Registra un nuevo alojamiento</h4>
-                    <form>
+                    <form action="alojamiento.php" method="post">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -50,7 +50,7 @@ include("services/resources.php"); //Export api URL?>
                                 $url = $apiurl . "estados/"; //concat the api url with the uri of the service
                                 $estados=getDataapi($url)
                                  ?>
-                                 <select name="estado" class="custom-select" >
+                                 <select id="estado" class="custom-select" name="estado" >
                                     <?php for($i=0;$i<count($estados);$i++){?>
                                     <option value="<?php echo $estados[$i]['id'] ;?>"><?php echo $estados[$i]['nombre']; ?> </option>
                                     <?php } ?>
@@ -66,7 +66,7 @@ include("services/resources.php"); //Export api URL?>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fas fa-bed"></i> </span>
                                 </div>
-                                <select name="camas" class="custom-select" style="max-width: 120px;">
+                                <select id="camas" class="custom-select" style="max-width: 120px;">
                                     <option disabled selected="">Camas</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -78,8 +78,8 @@ include("services/resources.php"); //Export api URL?>
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-door-closed"></i> </span>
                                 </div>
-                                <select name="cuartos" class="custom-select" style="max-width: 120px;">
-                                    <option selected="">Cuartos</option>
+                                <select id="cuartos"  class="custom-select" style="max-width: 120px;">
+                                    <option disabled selected="">Cuartos</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -88,8 +88,8 @@ include("services/resources.php"); //Export api URL?>
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-bath"></i> </span>
                                 </div>
-                                <select name="banos" class="custom-select" style="max-width: 120px;">
-                                    <option selected="">Baños</option>
+                                <select id="banos" class="custom-select" style="max-width: 120px;">
+                                    <option  disabled selected="">Baños</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -100,8 +100,8 @@ include("services/resources.php"); //Export api URL?>
                                 <div class="input-group-prepend" style="margin-left: 60px;">
                                     <span class="input-group-text"> <i class="fas fa-plane-arrival"></i> </span>
                                 </div>
-                                <select name="checkin" class="custom-select" style="max-width: 140px;">
-                                    <option selected="">Check-in</option>
+                                <select id="checkin" class="custom-select" style="max-width: 140px;">
+                                    <option  disabled selected="">Check-in</option>
                                     <option value="13">13:00</option>
                                     <option value="14">14:00</option>
                                     <option value="15">15:00</option>
@@ -117,8 +117,8 @@ include("services/resources.php"); //Export api URL?>
                                 <div class="input-group-prepend" style="margin-left: 20px">
                                     <span class="input-group-text"> <i class="fas fa-plane-departure"></i> </span>
                                 </div>
-                                <select name="checkout" class="custom-select" style="max-width: 140px;">
-                                    <option selected="">Check-out</option>
+                                <select id="checkout" class="custom-select" style="max-width: 140px;">
+                                    <option  disabled selected="">Check-out</option>
                                     <option value="8">8:00</option>
                                     <option value="9">9:00</option>
                                     <option value="10">10:00</option>
@@ -144,7 +144,15 @@ include("services/resources.php"); //Export api URL?>
                                     <input id="Imagenes" name="Imagenes" class="input-file" type="file">
                                 </div>
                             <div>
-                                <input type="text" id="array" name="amenidad" >
+                                <input type="text" id="array" name="amenidad" hidden >
+                                <input type="text" id="cuartoSeleccionado" name="cuartos" hidden >
+                                <input type="text" id="camaSeleccionada" name="camas" hidden >
+                                <input type="text" id="banoSeleccionado" name="banos" hidden  >
+                                <input type="text" id="estadoSeleccionado" name="estado" >
+                                <input type="text" id="checkinSeleccionado" name="checkin" hidden  >
+                                <input type="text" id="checkoutSeleccionado" name="checkout" hidden  >
+
+
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block"> Registrar alojamiento  </button>
@@ -171,5 +179,35 @@ include("services/resources.php"); //Export api URL?>
     });
 
     });
-    </script>
+</script>
+<script>
+    $(document).on('change', '#cuartos', function(event) {
+     $('#cuartoSeleccionado').val($("#cuartos option:selected").text());
+    });
+</script>
+<script>
+    $(document).on('change', '#camas', function(event) {
+     $('#camaSeleccionada').val($("#camas option:selected").text());
+    });
+</script>
+<script>
+    $(document).on('change', '#banos', function(event) {
+     $('#banoSeleccionado').val($("#banos option:selected").text());
+    });
+</script>
+<script>
+    $(document).on('change', '#estado', function(event) {
+     $('#estadoSeleccionado').val($("#estado value:selected").text());
+    });
+</script>
+<script>
+    $(document).on('change', '#checkin', function(event) {
+     $('#checkinSeleccionado').val($("#checkin option:selected").text());
+    });
+</script>
+<script>
+    $(document).on('change', '#checkout', function(event) {
+     $('#checkoutSeleccionado').val($("#checkout option:selected").text());
+    });
+</script>
 </html>

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool= require('../services/ApiConnection'); //Api connection 
 /* GET users listing. */
-router.get('/:id_usuario', function(req, res, next) {
+/*router.get('/:id_usuario', function(req, res, next) {
   const id_usuario=req.params.id_usuario;
   pool.getConnection(function(err, connection) {
     connection.query('Select * from usuario where id="'+id_usuario+'"', function (error, results, fields) {
@@ -11,19 +11,17 @@ router.get('/:id_usuario', function(req, res, next) {
         res.json(results);  //We return the respone with all the information needed
     });
   });
-});
+});*/
 
 router.post('/', function(req, res, next) {
-  const{correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena,imagen}=req.body;
-  if(correo!="undefined" && nombre!="undefined"){
+  const{id_amenidad,id_departamento}=req.body;
     pool.getConnection(function(err, connection) {
-      connection.query('Insert into usuario(correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena,imagen) values ("'+correo+'","'+nombre+'","'+edad+'","'+telefono+'","'+sexo+'","'+direccion+'","'+fecha_nacimiento+'","'+estado+'","'+contrasena+'","'+imagen+'")', function (error, results, fields) {
+      connection.query('Insert into amenidad_departamento(id_amenidad,id_departamento) values ("'+id_amenidad+'","'+id_departamento+'")', function (error, results, fields) {
           connection.release();
           if (error) throw error;
           res.json(results);  //We return the respone with all the information needed
       });
     });
-  }
 });
 
 router.delete('/:id_usuario', function(req, res, next) {
