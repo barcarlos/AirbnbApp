@@ -1,6 +1,8 @@
 <?php
 include("services/apifunctions.php");
 include("services/resources.php"); //Export api URL
+//variables de sesion 
+session_start();
 $nombre=$_POST['nombre'];
 $descripcion=$_POST['descripcion'];
 $direccion=$_POST['direccion'];
@@ -31,7 +33,7 @@ $data = array(
 $res=postapi($data,$url);
 $array = json_decode($res, true);
 $id_departamento=$array[0]['id']; 
-
+$_SESSION["id_departamento"]=$id_departamento;
 //Now we're gonna insert in amenities table
 $url = $apiurl . "amenidad_departamento/";
 for($i=0;$i<count($arrayAmenidad);$i++){
@@ -41,5 +43,5 @@ for($i=0;$i<count($arrayAmenidad);$i++){
   );
   $response=postapi($data2,$url);
 }
-
+header("location:subirImagen.html");
 ?>

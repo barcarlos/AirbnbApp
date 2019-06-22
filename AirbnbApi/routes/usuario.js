@@ -14,10 +14,10 @@ router.get('/:id_usuario', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const{correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena,imagen}=req.body;
+  const{correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena}=req.body;
   if(correo!="undefined" && nombre!="undefined"){
     pool.getConnection(function(err, connection) {
-      connection.query('Insert into usuario(correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena,imagen) values ("'+correo+'","'+nombre+'","'+edad+'","'+telefono+'","'+sexo+'","'+direccion+'","'+fecha_nacimiento+'","'+estado+'","'+contrasena+'","'+imagen+'")', function (error, results, fields) {
+      connection.query('Insert into usuario(correo,nombre,edad,telefono,sexo,direccion,fecha_nacimiento,estado,contrasena) values ("'+correo+'","'+nombre+'","'+edad+'","'+telefono+'","'+sexo+'","'+direccion+'","'+fecha_nacimiento+'","'+estado+'","'+contrasena+'")', function (error, results, fields) {
           connection.release();
           if (error) throw error;
           res.json(results);  //We return the respone with all the information needed
