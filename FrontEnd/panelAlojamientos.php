@@ -87,7 +87,7 @@ include("services/resources.php"); //Export api URL?>
                         </div>
                         <div class="card-footer">
                             <small>$ <?php echo $data[$i]['precio_noche']; ?></small>
-                            <a href="#" class="pull-right">Reservar!</a>
+                            <a href="eliminarAlojamiento.php?=" class="pull-right">Eliminar</a>
                         </div>
                     </div>
                 </div>
