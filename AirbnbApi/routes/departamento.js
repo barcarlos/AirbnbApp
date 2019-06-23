@@ -14,10 +14,10 @@ router.get('/:id_departamento', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const{direccion, habitaciones, banos, camas, noches_minimas, precio_noche,checkin,checkout,ubicacion, id_anfitrion,id_estado}=req.body;
+  const{descripcion,nombre,direccion, habitaciones, banos, camas, noches_minimas, precio_noche,checkin,checkout,ubicacion, id_anfitrion,id_estado}=req.body;
   if(direccion!="undefined" && habitaciones!="undefined" && banos!="undefined" && camas!="undefined"  && noches_minimas!="undefined" && precio_noche!="undefined" && checkin!="undefined" && checkout!="undefined" && id_anfitrion!="undefined" && id_estado!="undefined" ){
     pool.getConnection(function(err, connection) {
-      connection.query('Insert into departamento(direccion, habitaciones, banos, camas, precio_noche,checkin,checkout,ubicacion,id_anfitrion,id_estado) values ("'+direccion+'","'+habitaciones+'","'+banos+'","'+camas+'","'+precio_noche+'","'+checkin+'","'+checkout+'","'+ubicacion+'", "'+id_anfitrion+'","'+id_estado+'")', function (error, results, fields) {
+      connection.query('Insert into departamento(direccion, habitaciones, banos, camas, precio_noche,checkin,checkout,ubicacion,id_anfitrion,id_estado,nombre,descripcion) values ("'+direccion+'","'+habitaciones+'","'+banos+'","'+camas+'","'+precio_noche+'","'+checkin+'","'+checkout+'","'+ubicacion+'", "'+id_anfitrion+'","'+id_estado+'","'+nombre+'","'+descripcion+'")', function (error, results, fields) {
           //connection.release();
           if (error) throw error;
           //res.json(results);  //We return the respone with all the information needed
