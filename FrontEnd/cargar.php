@@ -1,23 +1,36 @@
 <?php
-include("services/apifunctions.php");
-include("services/resources.php"); //Export api URL
-session_start();
-$id_departamento=$_SESSION["id_departamento"];
 if(isset($_POST["submit"])){
     $revisar = getimagesize($_FILES["image"]["tmp_name"]);
     if($revisar !== false){
         $image = $_FILES['image']['tmp_name'];
-        $imgContenido = addslashes(file_get_contents($image)); //Exste es el string que mandamos
+        $imgContenido = addslashes(file_get_contents($image));
+        
+        //Credenciales Mysql
+        $Host = 'localhost';
+        $Username = 'root';
+        $Password = '151295';
+        $dbName = 'airbnb';
+        
+        //Crear conexion con la abse de datos
+        $db = new mysqli($Host, $Username, $Password, $dbName);
+        
+        // Cerciorar la conexion
+        if($db->connect_error){
+            die("Connection failed: " . $db->connect_error);
+        }
+        
+        
         //Insertar imagen en la base de datos
-        $url = $apiurl . "imagen/" . $id_departamento; //concat the api url with the uri of the service
-        echo $imgContenido;
-        $imgContenido=base64_encode (  $imgContenido );
-        $data = array(
-            'imagen' => $imgContenido,
-          );
-        putapi($data,$url);
-        echo "-------------------------------------------------------------------------------------------------------";
-        echo "Insertado exitosamente compa";
-        	}	// COndicional para verificar la subida del fichero
+        $insertar = $db->query("UPDATE departamento set imagen='$imgContenido' where id='15' ");
+		// COndicional para verificar la subida del fichero
+        if($insertar){
+            echo "Archivo Subido Correctamente.";
+        }else{
+            echo "Ha fallado la subida, reintente nuevamente.";
+        } 
+		// Sie el usuario no selecciona ninguna imagen
+    }else{
+        echo "Por favor seleccione imagen a subir.";
+    }
 }
 ?>
