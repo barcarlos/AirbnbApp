@@ -12,6 +12,7 @@ if(count($res)==0){
   echo "Nombre de usuario o contraseña incorrectos, intentalo de nuevo";
 }  
 else{
+  $_SESSION['id'] = $array[0]['id'];
   $_SESSION['nombre'] = $array[0]['nombre'];
   $_SESSION['correo'] = $array[0]['correo'];
   $_SESSION['estado'] = $array[0]['estado'];

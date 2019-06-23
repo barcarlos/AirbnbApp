@@ -9,7 +9,13 @@ $direccion=$_POST['direccion'];
 $edad=$_POST['edad'];
 $telefono=$_POST['telefono'];
 $estado=$_POST['estado'];
+$tipo=$_POST['tipo'];
 $url = $apiurl . "usuario/"; //concat the api url with the uri of the service
+if($tipo=='anfitrion'){
+  $tipo='1';
+}else{
+  $tipo='2';
+}
 $data = array(
   'correo' => $correo,
   'nombre' => $nombre,
@@ -19,7 +25,8 @@ $data = array(
   'direccion' => $direccion,
   'fecha_nacimiento' => $fecha,
   'estado' => $estado,
-  'contrasena' => $contrasena
+  'contrasena' => $contrasena,
+  'tipo' => $tipo
 );
   $res=postapi($data,$url);
 echo json_encode($res);
@@ -27,6 +34,6 @@ if(count($res)==0){
   echo "Nombre de usuario o contraseña incorrectos, intentalo de nuevo";
 }  
 else{
-  header("location:nuevoAlojamiento.html");
+  header("location:iniciarSesion.html");
 }  
 ?>

@@ -1,14 +1,29 @@
 <?php
-include("services/apifunctions.php");
-include("services/resources.php"); //Export api URL
-
+session_start();
     //Credenciales de conexion
-    $url = $apiurl . "departamento/10" ; // . $id_departamento; //concat the api url with the uri of the service
-    $res=getDataapi($url);
-    $imagen="";
-    $string = implode(array_map("chr", $res[0]['imagen']['data']));
-    $imagen1=base64_decode($string);
+    $Host = 'localhost';
+    $Username = 'root';
+    $Password = '151295';
+    $dbName = 'airbnb';
+    
+    //Crear conexion mysql
+    $db = new mysqli($Host, $Username, $Password, $dbName);
+    
+    //revisar conexion
+    if($db->connect_error){
+       die("Connection failed: " . $db->connect_error);
+    }
+    
+    //Extraer imagen de la BD mediante GET
+    $id=array_shift($_SESSION['imagenes']);
+    $result = $db->query("SELECT imagen FROM departamento WHERE id = '$id' ");
+    if($result->num_rows > 0){
+        $imgDatos = $result->fetch_assoc();
+        
         //Mostrar Imagen
-        //header("Content-type: image/jpg"); 
-        echo $imagen1; 
+        header("Content-type: image/jpg"); 
+        echo $imgDatos['imagen']; 
+    }else{
+        echo 'Imagen no existe...';
+    }
 ?>

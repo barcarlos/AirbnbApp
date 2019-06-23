@@ -25,7 +25,7 @@ $data = array(
   'habitaciones' => $cuartos,
   'banos' => $banos,
   'id_estado' => "1", //we got the state id 
-  'id_anfitrion' => "1", //Chenge this for a session variable 
+  'id_anfitrion' => $_SESSION["id"], //Chenge this for a session variable 
   'checkin' => $checkin,
   'checkout' => $checkout,
 

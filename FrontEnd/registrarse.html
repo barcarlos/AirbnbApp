@@ -89,7 +89,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-user-circle"></i> </span>
                 </div>
-                <select class="form-control" name="tipo">
+                <select class="form-control" id="tipo">
                     <option disabled selected=""> Tipo de Perfil</option>
                     <option>Anfitrion</option>
                     <option>Huésped</option>
@@ -104,7 +104,8 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block"> Crear cuenta  </button>
         </div> <!-- form-group// -->      
-        <p class="text-center">Tienes una cuenta? <a href="">Inicia sesión</a> </p>                                                                 
+        <p class="text-center">Tienes una cuenta? <a href="">Inicia sesión</a> </p>  
+        <input type="text" id="checkoutSeleccionado" name="tipo" hidden  >                                                               
         </form>
 </article>
 		
@@ -142,5 +143,10 @@
 		</div>
 	</div>
 </div>
+<script>
+        $(document).on('change', '#tipo', function(event) {
+         $('#tipoSeleccionado').val($("#tipo option:selected").text());
+        });
+    </script>
 </body>
 </html>

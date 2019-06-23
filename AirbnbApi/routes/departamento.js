@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
           if (error) throw error;
           //res.json(results);  //We return the respone with all the information needed
       });
-      connection.query('Select id from departamento where id_anfitrion="'+id_anfitrion+'"', function (error, results, fields) {
+      connection.query('Select id from departamento where id_anfitrion="'+id_anfitrion+'" and nombre like "'+nombre+'" order by id asc', function (error, results, fields) {
         connection.release();
         if (error) throw error;
         res.json(results);  //We return the respone with all the information needed

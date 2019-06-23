@@ -62,14 +62,20 @@ include("services/resources.php"); //Export api URL?>
             </div>
             <div class="row">
                 <?php 
+                session_start();
                 $url = $apiurl . "verDepartamentos/"; //concat the api url with the uri of the service
                 $data=getDataapi($url) ;
-
                 for($i=0;$i<count($data);$i++){
+                    $_SESSION['imagenes'][]=$data[$i]['id']; 
+                    echo "<h1>" . $_SESSION['imagenes'][$i] . "</h1>";
+                }
+                //var_dump($_SESSION['id']);
+                for($i=0;$i<count($data);$i++){
+
                 ?>
                 <div class="col-sm-6 col-md-4 col-lg-4 mt-4 wow bounceInUp" data-wow-duration="1.4s">
                     <div class="card">
-                        <img class="card-img-top h-262" src="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
+                        <img class="card-img-top h-262" src="vista.php?=<?php echo $data[$i]['id'] ?>">
                         <div class="card-block">
 
                             <h4 class="card-title" style="color: black"><?php echo $data[$i]['nombre']; ?></h4>
