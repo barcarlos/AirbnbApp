@@ -14,7 +14,6 @@ body {
 
 header.masthead {
     position: relative;
-    height: 100vh;
     background-color: #343a40;
     background-image: url("fondoAtardecer.jpg");
     -webkit-background-size: cover;
