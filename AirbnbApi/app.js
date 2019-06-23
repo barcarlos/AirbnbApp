@@ -15,6 +15,7 @@ var amenidad_departamentoRouter = require('./routes/amenidad_departamento');
 var estado_nombreRouter = require('./routes/estado_nombre');
 var imagenRouter = require('./routes/imagen');
 var verDepartamentosRouter = require('./routes/verDepartamentos');
+var misalojamientosRouter = require('./routes/misalojamientos');
 
 var app = express();
 
@@ -39,6 +40,7 @@ app.use('/amenidad_departamento', amenidad_departamentoRouter);
 app.use('/estado_nombre', estado_nombreRouter);
 app.use('/imagen', imagenRouter);
 app.use('/verDepartamentos', verDepartamentosRouter);
+app.use('/misalojamientos', misalojamientosRouter);
 /*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

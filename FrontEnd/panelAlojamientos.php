@@ -42,6 +42,8 @@ include("services/resources.php"); //Export api URL?>
                 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-link">
+                    <a class="btn btn-primary btn-block btn-login" href="nuevoAlojamiento.php">Agregar </a>
+                    <a class="btn btn-primary btn-block btn-login" href="nuevoAlojamiento.php">Reservaciones </a>
                         <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
                     </li>
                 </ul>
@@ -56,14 +58,14 @@ include("services/resources.php"); //Export api URL?>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mx-auto wow fadeInUp">
-                    <h3 class="text-center font-weight-bold">Alojamien<span class="bg-main">tos</span></h3>
+                    <h3 class="text-center font-weight-bold">MIS<span class="bg-main">Alojamientos</span></h3>
                     <p class=" text-center"></p>
                 </div>
             </div>
             <div class="row">
                 <?php 
                 session_start();
-                $url = $apiurl . "verDepartamentos/"; //concat the api url with the uri of the service
+                $url = $apiurl . "misAlojamientos/" . $_SESSION['id'] ; //concat the api url with the uri of the service
                 $data=getDataapi($url) ;
                 for($i=0;$i<count($data);$i++){
                     $_SESSION['imagenes'][]=$data[$i]['id']; 
