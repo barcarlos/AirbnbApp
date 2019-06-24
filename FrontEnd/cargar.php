@@ -6,7 +6,7 @@ if(isset($_POST["submit"])){
         $image = $_FILES['image']['tmp_name'];
         $imgContenido = addslashes(file_get_contents($image));
         
-        //Credenciales Mysql
+        //Credenciales Mysql}
         $Host = 'localhost';
         $Username = 'root';
         $Password = '151295';

@@ -43,7 +43,7 @@ include("services/resources.php"); //Export api URL?>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-link">
                     <a class="btn btn-primary btn-block btn-login" href="nuevoAlojamiento.php">Agregar </a>
-                    <a class="btn btn-primary btn-block btn-login" href="nuevoAlojamiento.php">Reservaciones </a>
+                    <a class="btn btn-primary btn-block btn-login" href="reservacionesrecibidas.php">Reservaciones </a>
                         <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
                     </li>
                 </ul>
@@ -87,7 +87,7 @@ include("services/resources.php"); //Export api URL?>
                         </div>
                         <div class="card-footer">
                             <small>$ <?php echo $data[$i]['precio_noche']; ?></small>
-                            <a href="eliminarAlojamiento.php?=" class="pull-right">Eliminar</a>
+                            <a href="eliminarAlojamiento.php?id_departamento=<?php echo $data[$i]['id']; ?>" class="pull-right">Eliminar</a>
                         </div>
                     </div>
                 </div>

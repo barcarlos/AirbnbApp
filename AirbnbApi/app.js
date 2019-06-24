@@ -16,6 +16,9 @@ var estado_nombreRouter = require('./routes/estado_nombre');
 var imagenRouter = require('./routes/imagen');
 var verDepartamentosRouter = require('./routes/verDepartamentos');
 var misalojamientosRouter = require('./routes/misalojamientos');
+var reservacionRouter = require('./routes/reservacion');
+var misreservacionesRouter = require('./routes/misreservaciones');
+var reservacionesrecibidasRouter = require('./routes/reservacionesrecibidas');
 
 var app = express();
 
@@ -41,6 +44,9 @@ app.use('/estado_nombre', estado_nombreRouter);
 app.use('/imagen', imagenRouter);
 app.use('/verDepartamentos', verDepartamentosRouter);
 app.use('/misalojamientos', misalojamientosRouter);
+app.use('/reservacion', reservacionRouter);
+app.use('/misreservaciones', misreservacionesRouter);
+app.use('/reservacionesrecibidas', reservacionesrecibidasRouter);
 /*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

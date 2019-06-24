@@ -6,19 +6,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+    <!------ Include the above in your HEAD tag aqui van los mios ---------->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <link rel="stylesheet" href="css/styleAlojamiento.css">
+    <link rel="stylesheet" href="css/stylePrincipal.css">
 </head>
-<?php 
-include("services/apifunctions.php");
-include("services/resources.php"); //Export api URL?>
 <body>
    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
         <div class="container">
@@ -39,15 +39,13 @@ include("services/resources.php"); //Export api URL?>
           </ul>
         </div>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-link">
-                        <a class="btn btn-primary btn-block btn-login" href="misReservaciones.php">Mis reservas</a>
+                    <li class="nav-link">
+                        <a class="btn btn-primary btn-block btn-login" href="valojamiento.php">Regresar</a>
                     </li>
                     <li class="nav-link">
-                        <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
+                    <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
                     </li>
-                    
                 </ul>
             </div>
 
@@ -56,48 +54,65 @@ include("services/resources.php"); //Export api URL?>
 
     
     <header class="masthead text-white ">
-    <section>
-        <div class="container">
+        <div class="overlay">
+        </div>
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8 mx-auto wow fadeInUp">
-                    <h3 class="text-center font-weight-bold">Alojamien<span class="bg-main">tos</span></h3>
-                    <p class=" text-center"></p>
-                </div>
-            </div>
-            <div class="row">
-                <?php 
-                session_start();
-                $url = $apiurl . "verDepartamentos/"; //concat the api url with the uri of the service
-                $data=getDataapi($url) ;
-                for($i=0;$i<count($data);$i++){
-                    $_SESSION['imagenes'][]=$data[$i]['id']; 
-                }
-                //var_dump($_SESSION['id']);
-                for($i=0;$i<count($data);$i++){
-
-                ?>
-                <div class="col-sm-6 col-md-4 col-lg-4 mt-4 wow bounceInUp" data-wow-duration="1.4s">
-                    <div class="card">
-                        <img class="card-img-top h-262" src="vista.php?=<?php echo $data[$i]['id'] ?>">
-                        <div class="card-block">
-
-                            <h4 class="card-title" style="color: black"><?php echo $data[$i]['nombre']; ?></h4>
-
-                            <div class="card-text ">
-                                <p><?php echo $data[$i]['descripcion'];?></p>
+            <?php 
+            include("services/apifunctions.php");
+            include("services/resources.php"); //Export api URL
+            session_start();
+            $url = $apiurl . "misreservaciones/" . $_SESSION['id']  ; //concat the api url with the uri of the service
+            $data=getDataapi($url);
+            ?>
+            <?php for($i=0;$i<count($data);$i++){?>              
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="tile">
+                        <div class="wrapper">
+                            <div class="header"></div>
+                            <div class="dates">
+                                <p><?php  
+                                            $url = $apiurl . "departamento/" . $data[$i]['id_departamento'];
+                                            $datadep=getDataapi($url);
+                                
+                                echo $datadep[0]['nombre']; ?></p>
                             </div>
+                            <div class="dates">
+                                <div class="start">
+                                    <strong>STARTS</strong> <?php echo $data[$i]['checkin']; ?>
+                                    <span></span>
+                                </div>
+                                <div class="ends">
+                                    <strong>ENDS</strong> <?php echo $data[$i]['checkout']; ?>
+                                </div>
+                            </div>
+    
+                            <div class="stats">
+                                <div>
+                                    <strong>Personas</strong> <?php echo $data[$i]['numero_personas']; ?>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stats">
+    
+                            <li class="nav-link">
+                        <a class="btn btn-primary btn-block btn-register" href="eliminarReservacion.php?id_res=<?php echo $data[$i]['id']; ?>">eliminar</a>
+                    </li>
+    
+                            </div>
+    
                         </div>
-                        <div class="card-footer">
-                            <small>$ <?php echo $data[$i]['precio_noche']; ?></small>
-                            <a href="reservacion.php?id_res=<?php echo $data[$i]['id']; ?>" class="pull-right">Reservar!</a>
-                        </div>
-                    </div>
+                    </div> 
                 </div>
-                <?php } ?>
+            <?php  } ?> 
             </div>
         </div>
-    </section>
     </header>
+
+    
+
+    
    
     <footer class="footer bg-dark">
         <div class="container">

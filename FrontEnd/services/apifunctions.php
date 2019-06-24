@@ -40,7 +40,6 @@ function putapi($data,$url){
     //create a new cURL resource
     $ch = curl_init($url);
     $payload = json_encode($data);
-    echo $payload;
     //attach encoded JSON string to the POST fields
     curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

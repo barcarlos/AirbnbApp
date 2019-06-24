@@ -6,10 +6,10 @@ $data = array(
   'descripcion' => $descripcion
 
 );
-if(!empty($_GET['id_departamento'])){
-  $url = $apiurl . "departamento/" . $_GET['id_departamento'] ; //concat the api url with the uri of the service
+if(!empty($_GET['id_res'])){
+  $url = $apiurl . "reservacion/" . $_GET['id_res'] ; //concat the api url with the uri of the service
     $res=deleteapi($data,$url);
-    header("location:panelAlojamientos.php");
+    header("location:misReservaciones.php");
 
 }
 ?>
