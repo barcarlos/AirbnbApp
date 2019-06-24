@@ -1,9 +1,9 @@
 <?php
 session_start();
     //Credenciales de conexion
-    $Host = 'localhost';
+    $Host = '192.168.43.176';
     $Username = 'root';
-    $Password = '151295';
+    $Password = 'qwerty1';
     $dbName = 'airbnb';
     
     //Crear conexion mysql

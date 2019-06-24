@@ -1,6 +1,6 @@
 <?php
-//exportar todas las varibles de este archivo
+/exportar todas las varibles de ete archivo
 //dieccion de la API
- $apiurl="http://localhost:3000/";
- $apiurl2="http://localhost:4000/";
+ $apiurl="192.168.43.176";
+ $apiurl2="192.168.43.101";
 ?>
