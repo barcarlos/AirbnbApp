@@ -139,16 +139,11 @@ include("services/resources.php"); //Export api URL?>
                                    </div>
                             </div> <!-- form-group// -->
                             <?php }?>
-                            <label for="imagenes">
-                                <div class="imgn">
-                                    <input id="Imagenes" name="Imagenes" class="input-file" type="file">
-                                </div>
-                            <div>
                                 <input type="text" id="array" name="amenidad" hidden >
                                 <input type="text" id="cuartoSeleccionado" name="cuartos" hidden >
                                 <input type="text" id="camaSeleccionada" name="camas" hidden >
                                 <input type="text" id="banoSeleccionado" name="banos" hidden  >
-                                <input type="text" id="estadoSeleccionado" name="estado" >
+                                <input type="text" id="estadoSeleccionado" name="estado" hidden>
                                 <input type="text" id="checkinSeleccionado" name="checkin" hidden  >
                                 <input type="text" id="checkoutSeleccionado" name="checkout" hidden  >
 

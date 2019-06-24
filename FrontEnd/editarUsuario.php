@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php 
+
+include("services/apifunctions.php");
+include("services/resources.php"); //Export api URL
+session_start();
+?>
 	<title>Registrate</title>
    <!--Made with love by Mutiullah Samim -->
    <meta charset="UTF-8">
@@ -16,6 +22,10 @@
 	<link rel="stylesheet" type="text/css" href="css/stylesRegistrarse.css">
 </head>
 <body>
+<?php 
+                $url = $apiurl . "usuario/" . $_SESSION['id'] ; //concat the api url with the uri of the service
+                $data=getDataapi($url) ;
+                ?>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -27,25 +37,25 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Nombre Completo" type="text" name="nombre">
+                <input  class="form-control" value="<?php echo $data[0]['nombre']?>" placeholder="Nombre Completo" type="text" name="nombre">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Correo" type="email" name="correo">
+                <input  class="form-control" value="<?php echo $data[0]['correo']?>" placeholder="Correo" type="email" name="correo">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-id-card"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Edad" type="text" name="edad">
+                <input  class="form-control" value="<?php echo $data[0]['edad']?>" placeholder="Edad" type="text" name="edad">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-calendar-alt"></i> </span>
                  </div>
-                <input  class="form-control" placeholder=" Fecha nacimiento(AAAA-MM-DD)" type="text" name="fecha">
+                <input  class="form-control" value="<?php echo $data[0]['fecha_nacimiento']?>" placeholder=" Fecha nacimiento(AAAA-MM-DD)" type="text" name="fecha">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -57,7 +67,7 @@
                     <option value="2">+449</option>
                     <option value="3">+449</option>
                 </select>
-                <input  class="form-control" placeholder="Número de teléfono" type="text" name="telefono">
+                <input  class="form-control" value="<?php echo $data[0]['telefono']?>" placeholder="Número de teléfono" type="text" name="telefono">
             </div> <!-- form-group// -->
             <div class="form-group input-group" >
                 <div>
@@ -77,20 +87,20 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-location-arrow"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Dirección" type="text" name="direccion">
+                <input  class="form-control"  value="<?php echo $data[0]['direccion']?>" placeholder="Dirección" type="text" name="direccion">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Estado" type="text" name="estado">
+                <input  class="form-control"  value="<?php echo $data[0]['estado']?>" placeholder="Estado" type="text" name="estado">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fas fa-user-circle"></i> </span>
                 </div>
                 <select class="form-control" id="tipo">
-                    <option disabled selected=""> Tipo de Perfil</option>
+                    <option disabled selected="">value="<?php echo $data[0]['tipo']?>"</option>
                     <option>Anfitrion</option>
                     <option>Huésped</option>
                 </select>
@@ -99,47 +109,15 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input class="form-control" placeholder="Crear contraseña" type="password" name ="contrasena">
+                <input class="form-control" placeholder="Cambiar contraseña" type="password" name ="contrasena">
             </div> <!-- form-group// -->                                      
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block"> Crear cuenta  </button>
         </div> <!-- form-group// -->      
-        <p class="text-center">Tienes una cuenta? <a href="">Inicia sesión</a> </p>  
+        <p class="text-center">Tienes una cuenta? <a href="iniciarSesion.html">Inicia sesión</a> </p>  
         <input type="text" id="tipoSeleccionado" name="tipo" hidden  >                                                               
         </form>
 </article>
-		
-		<!--<div class="card-header">
-				<h3>Iniciar Sesión</h3>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" class="form-control" placeholder="Usuario">
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" class="form-control" placeholder="Contraseña">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Recordarme
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Entrar" class="btn float-right login_btn">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					No tienes una cuenta?<a href="#">Registrate</a>
-				</div>
-			</div>-->
 		</div>
 	</div>
 </div>

@@ -9,6 +9,8 @@ var reservacionesRouter = require('./routes/reservaciones');
 var experienciaRouter = require('./routes/experiencia');
 var pagoRouter = require('./routes/pago');
 var agregarpagoRouter = require('./routes/agregarpago');
+var experienciasRouter = require('./routes/experiencias');
+var misexperienciasRouter = require('./routes/misexperiencias');
 
 var app = express();
 
@@ -24,5 +26,7 @@ app.use('/reservaciones', reservacionesRouter);
 app.use('/experiencia', experienciaRouter);
 app.use('/agregarpago', agregarpagoRouter);
 app.use('/pago', pagoRouter);
+app.use('/experiencias', experienciasRouter);
+app.use('/misexperiencias', misexperienciasRouter);
 
 module.exports = app;

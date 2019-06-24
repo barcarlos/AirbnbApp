@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registra una nueva experiencia</title>
+   <!--Made with love by Mutiullah Samim -->
+   <meta charset="UTF-8">
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="css/stylesNuevaActividad.css">
+</head>
+<body>
+    <div class="container">
+	    <div class="d-flex justify-content-center h-100">
+		    <div class="card">
+		        <article class="card-body mx-auto" style="max-width: 580px;">
+                    <h4 class="card-title mt-3 text-center">Registra una nueva experiencia</h4>
+                    <form action="nuevaExp.php" method="post" >
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend" style=" margin-bottom:  18px;">
+                                <span class="input-group-text"> <i class="fas fa-bars"></i> </span>
+                                <textarea class="form-control" placeholder="Descripción" name="descripcion" id="" cols="50" rows="2"></textarea>
+                            </div>
+                            <div class="form-group input-group" >
+                                <div class="input-group-prepend" >
+                                    <span class="input-group-text"> <i class="fas fa-location-arrow"></i> </span>
+                                 </div>
+                                <input name="direccion" class="form-control" placeholder="Dirección" type="text">
+                            </div> <!-- form-group// -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
+                                 </div>
+                                <input name="estado" class="form-control" placeholder="Estado" type="text">
+                            </div> <!-- form-group// -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fas fa-dollar-sign"></i> </span>
+                                </div>
+                                <input name="precio" class="form-control" placeholder="Precio por persona" type="text">
+                            </div> <!-- form-group// -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fas fa-bed"></i> </span>
+                                </div>
+                                <select class="custom-select" id="persona" style="max-width: 220px;">
+                                    <option disabled selected="">Personas</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="1">4</option>
+                                    <option value="2">5</option>
+                                    <option value="3">6</option>
+                                </select>
+                                <div class="input-group-prepend" style="margin-left: 20px">
+                                    <span class="input-group-text"> <i class="fas fa-door-closed"></i> </span>
+                                </div>
+                                <select class="custom-select" id="duracion" style="max-width: 220px;">
+                                    <option disabled selected="">Duracion</option>
+                                    <option value="1:00:00">1:00:00</option>
+                                    <option value="2:00:00">2:00:00</option>
+                                    <option value="3:00:00">3:00:00</option>
+                                    <option value="4:00:00">4:00:00</option>
+                                    <option value="5:00:00">5:00:00</option>
+                                    <option value="6:00:00">6:00:00</option>
+                                    <option value="7:00:00">7:00:00</option>
+                                    <option value="8:00:00">8:00:00</option>
+                                    <option value="9:00:00">9:00:00</option>
+                                    <option value="10:00:00">10:00:00</option>
+                                    <option value="11:00:00">11:00:00</option>
+                                    <option value="12:00:00">12:00:00</option>
+                                </select>
+                            </div> <!-- form-group// -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend" style="margin-left: 140px">
+                                    <span class="input-group-text"> <i class="fas fa-bath"></i> </span>
+                                </div>
+                                <select class="custom-select" id="idioma" style="max-width: 220px;">
+                                    <option disabled selected>Idioma</option>
+                                    <option value="espanol">Español</option>
+                                    <option value="ingles">Inglés</option>
+                                    <option value="aleman">Alemán</option>
+                                    <option value="italiano">Italiano</option>
+                                </select>
+                            </div>
+                            <input type="text" id="personaSeleccionado" name="personas" hidden  >
+                            <input type="text" id="idiomaSeleccionado" name="idioma" hidden  >
+                            <input type="text" id="duracionSeleccionado" name="duracion" hidden  >
+                            <div class="form-group" style="width: 540px;">
+                                <button type="submit" class="btn btn-primary btn-block"> Registrar alojamiento  </button>
+                            </div> <!-- form-group// --> 
+                        </div>
+                    </form>
+                </article>
+		    </div>
+	    </div>
+    </div>
+</body>
+
+<script>
+    $(document).on('change', '#persona', function(event) {
+     $('#personaSeleccionado').val($("#persona option:selected").text());
+    });
+    $(document).on('change', '#idioma', function(event) {
+     $('#idiomaSeleccionado').val($("#idioma option:selected").text());
+    });
+    $(document).on('change', '#duracion', function(event) {
+     $('#duracionSeleccionado').val($("#duracion option:selected").text());
+    });
+</script>
+</html>
