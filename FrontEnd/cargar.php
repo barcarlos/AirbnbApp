@@ -7,9 +7,9 @@ if(isset($_POST["submit"])){
         $imgContenido = addslashes(file_get_contents($image));
         
         //Credenciales Mysql}
-        $Host = 'localhost';
-        $Username = 'root';
-        $Password = '151295';
+        $Host = '192.168.43.176';
+        $Username = 'carlos';
+        $Password = 'qwerty1';
         $dbName = 'airbnb';
         
         //Crear conexion con la abse de datos
