@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <link rel="stylesheet" href="css/styleAlojamiento.css">
+    <link rel="stylesheet" href="css/styleAlojamiento2.css">
 </head>
 <?php 
 include("services/apifunctions.php");
@@ -47,7 +47,9 @@ include("services/resources.php"); //Export api URL?>
                     <li class="nav-link">
                         <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
                     </li>
-                    
+                    <li class="nav-link">
+                    <a class="btn btn-primary btn-block btn-login" href="editarUsuario.php">Mi cuenta</a>
+                    </li>
                 </ul>
             </div>
 
@@ -74,7 +76,6 @@ include("services/resources.php"); //Export api URL?>
                 }
                 //var_dump($_SESSION['id']);
                 for($i=0;$i<count($data);$i++){
-
                 ?>
                 <div class="col-sm-6 col-md-4 col-lg-4 mt-4 wow bounceInUp" data-wow-duration="1.4s">
                     <div class="card">
@@ -95,7 +96,45 @@ include("services/resources.php"); //Export api URL?>
                 </div>
                 <?php } ?>
             </div>
+  
+            <div class="intermedio"></div>
+            <div class="row">
+                <div class="col-md-8 mx-auto wow fadeInUp">
+                    <h3 class="text-center font-weight-bold">Experienc<span class="bg-main">ias</span></h3>
+                    <p class=" text-center"></p>
+                </div>
+            </div>
+            <div class="row">
+                <?php 
+                $url = $apiurl2 . "experiencias/"; //concat the api url with the uri of the service
+                $data=getDataapi($url) ;
+                //var_dump($_SESSION['id']);*/
+                for($i=0;$i<count($data);$i++){
+                ?>
+                <div class="col-sm-6 col-md-4 col-lg-4 mt-4 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="card">
+                        <img class="card-img-top h-262" src="css/riviera.jpg">
+                        <div class="card-block">
+
+                            <h4 class="card-title" style="color: black"><?php echo $data[$i]['estado']; ?></h4>
+
+                            <div class="card-text ">
+                                <p><?php echo $data[$i]['descripcion'];?></p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <small>$ <?php echo $data[$i]['precio']; ?></small>
+                            <a href="reservar_experiencia.php?id_exp=<?php echo $data[$i]['id']; ?>" class="pull-right">Reservar!</a>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+
+
+            
         </div>
+
     </section>
     </header>
    
@@ -151,7 +190,6 @@ include("services/resources.php"); //Export api URL?>
               </script>
     <script>
         $(window).scroll( function(){
-
  
           var topWindow = $(window).scrollTop();
           var topWindow = topWindow * 1.5;
@@ -162,26 +200,22 @@ include("services/resources.php"); //Export api URL?>
           $('#bottom').css('opacity', position);
         
         });
-
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.display = "0";
             document.body.style.backgroundColor = "white";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginRight= "0";
             document.body.style.backgroundColor = "white";
         }
-
  
      $(window).on("scroll", function() {
             if ($(this).scrollTop() > 10) {
                 $("nav.navbar").addClass("mybg-dark");
                 $("nav.navbar").addClass("navbar-shrink");
               
-
             } else {
                 $("nav.navbar").removeClass("mybg-dark");
                 $("nav.navbar").removeClass("navbar-shrink");
@@ -189,7 +223,6 @@ include("services/resources.php"); //Export api URL?>
             }
             
       
-
         });
         
         $(function() {
@@ -206,8 +239,6 @@ include("services/resources.php"); //Export api URL?>
     }
   });
 });
-
-
 </script>
 <script>
     $(document).ready(function(){

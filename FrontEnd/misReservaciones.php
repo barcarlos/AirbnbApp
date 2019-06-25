@@ -72,10 +72,8 @@
                             <div class="header"></div>
                             <div class="dates">
                                 <p><?php  
-                                            $url = $apiurl . "departamento/" . $data[$i]['id_departamento'];
-                                            $datadep=getDataapi($url);
                                 
-                                echo $datadep[0]['nombre']; ?></p>
+                                echo $data[0]['nombre']; ?></p>
                             </div>
                             <div class="dates">
                                 <div class="start">
@@ -98,6 +96,49 @@
     
                             <li class="nav-link">
                         <a class="btn btn-primary btn-block btn-register" href="eliminarReservacion.php?id_res=<?php echo $data[$i]['id']; ?>">eliminar</a>
+                    </li>
+    
+                            </div>
+    
+                        </div>
+                    </div> 
+                </div>
+            <?php  } ?> 
+
+            <?php 
+            $url = $apiurl2 . "misreservaciones/" . $_SESSION['id']  ; //concat the api url with the uri of the service
+            $data=getDataapi($url);
+            ?>
+            <?php for($i=0;$i<count($data);$i++){?>              
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="tile">
+                        <div class="wrapper">
+                            <div class="header"></div>
+                            <div class="dates">
+                                <p><?php  
+                                echo $data[0]['descripcion']; ?></p>
+                            </div>
+                            <div class="dates">
+                                <div class="start">
+                                    <strong>HORA</strong> <?php echo $data[$i]['checkin']; ?>
+                                    <span></span>
+                                </div>
+                                <div class="ends">
+                                    <strong>FECHA</strong> <?php echo $data[$i]['fecha']; ?>
+                                </div>
+                            </div>
+    
+                            <div class="stats">
+                                <div>
+                                    <strong>Personas</strong> <?php echo $data[$i]['numero_personas']; ?>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stats">
+    
+                            <li class="nav-link">
+                        <a class="btn btn-primary btn-block btn-register" href="eliminarReservacion2.php?id_res=<?php echo $data[$i]['id']; ?>">eliminar</a>
                     </li>
     
                             </div>

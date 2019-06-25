@@ -6,7 +6,7 @@ include("services/apifunctions.php");
 include("services/resources.php"); //Export api URL
 if(!empty($_GET['id_exp'])){
   $url = $apiurl2 . "experiencia/" . $_GET['id_exp'] ; //concat the api url with the uri of the service
-  $dataDepartamento=getDataapi($url);
+  $dataExp=getDataapi($url);
   $_SESSION['id_exp']=$_GET['id_exp'];
   //echo  "<h3>" . $dataDepartamento[0]['nombre'] . "</h3>";
 }
@@ -33,12 +33,12 @@ if(!empty($_GET['id_exp'])){
 		<article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Reserva</h4>
             <p class="text-center">Reserva para tu Experiencia</p>
-            <form action="reserva.php" method="post">
+            <form action="creservacionexp.php" method="post">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                  </div>
-                <input  class="form-control" placeholder="Experiencia" type="text" name="Depto">
+                <input  class="form-control" placeholder="<?php echo $dataExp[0]['descripcion']; ?>" type="text" name="Depto">
             </div> <!-- form-group// -->
             <p class="text-center">Check in</p>
             <div class="form-group input-group">

@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
 		// COndicional para verificar la subida del fichero
         if($insertar){
             echo "Archivo Subido Correctamente.";
-            header("location:valojamiento.php");
+            header("location:panelAlojamientos.php");
         }else{
             echo "Ha fallado la subida, reintente nuevamente.";
         } 

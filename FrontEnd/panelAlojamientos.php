@@ -45,6 +45,7 @@ include("services/resources.php"); //Export api URL?>
                     <a class="btn btn-primary btn-block btn-login" href="nuevoAlojamiento.php">Agregar </a>
                     <a class="btn btn-primary btn-block btn-login" href="reservacionesrecibidas.php">Reservaciones </a>
                         <a class="btn btn-primary btn-block btn-login" href="iniciarSesion.html">Logout</a>
+                        <a class="btn btn-primary btn-block btn-login" href="editarUsuario.php">Mi cuenta</a>
                     </li>
                 </ul>
             </div>

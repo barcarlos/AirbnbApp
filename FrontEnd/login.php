@@ -20,7 +20,7 @@ else{
   $_SESSION['direccion'] = $array[0]['direccion'];
   $_SESSION['telefono'] = $array[0]['telefono'];
   if($_SESSION['tipo']=='1'){
-    header("location:panelAlojamientos.php");
+    header("location:seleccionar.html");
   }else{
     header("location:valojamiento.php");
   }

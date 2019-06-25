@@ -8,16 +8,16 @@ $mesi=$_POST['mesi'];
 $anioi=$_POST['anioi'];
 $checkin=$_POST['checkin'];
 $id_usuario=$_SESSION['id'] ;
-$id_experiencia=$_SESSION['id_e']; 
+$id_experiencia=$_SESSION['id_exp']; 
 $fecha=  "" . $anioi . "/" .  $mesi ."/". $diai;
-$url = $apiurl . "reservacion/"; //concat the api url with the uri of the service
+$url = $apiurl2 . "reservacion/"; //concat the api url with the uri of the service
 $data = array(
   'checkin' => $checkin,
   'checkout' => "2019/08/08",
   'numero_personas' => $personas,
   'fecha' => $fecha,
   'id_usuario' => $id_usuario,
-  'id_departamento' => $id_departamento
+  'id_experiencia' => $id_experiencia
 );
   $res=postapi($data,$url);
 if(count($res)==0){

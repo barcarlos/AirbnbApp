@@ -11,7 +11,8 @@ var pagoRouter = require('./routes/pago');
 var agregarpagoRouter = require('./routes/agregarpago');
 var experienciasRouter = require('./routes/experiencias');
 var misexperienciasRouter = require('./routes/misexperiencias');
-
+var misreservacionesRouter = require('./routes/misreservaciones');
+var reservacionesrecibidasRouter = require('./routes/reservacionesrecibidas');
 var app = express();
 
 app.use(logger('dev'));
@@ -28,5 +29,6 @@ app.use('/agregarpago', agregarpagoRouter);
 app.use('/pago', pagoRouter);
 app.use('/experiencias', experienciasRouter);
 app.use('/misexperiencias', misexperienciasRouter);
-
+app.use('/misreservaciones', misreservacionesRouter);
+app.use('/reservacionesrecibidas', reservacionesrecibidasRouter);
 module.exports = app;

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("services/apifunctions.php");
 include("services/resources.php"); //Export api URL
 $correo=$_POST['correo'];
@@ -10,8 +11,10 @@ $edad=$_POST['edad'];
 $telefono=$_POST['telefono'];
 $estado=$_POST['estado'];
 $tipo=$_POST['tipo'];
-$url = $apiurl . "usuario/"; //concat the api url with the uri of the service
-if($tipo=='Anfitrion'){
+$url = $apiurl . "usuario/" . $_SESSION['id']; //concat the api url with the uri of the service
+$aux=str_split($fecha, 10);
+$fecha=$aux[0];
+if($tipo=='anfitrion'){
   $tipo='1';
 }else{
   $tipo='2';
@@ -28,7 +31,7 @@ $data = array(
   'contrasena' => $contrasena,
   'tipo' => $tipo
 );
-  $res=postapi($data,$url);
+  $res=putapi($data,$url);
 echo json_encode($res);
 if(count($res)==0){
   echo "Nombre de usuario o contraseña incorrectos, intentalo de nuevo";

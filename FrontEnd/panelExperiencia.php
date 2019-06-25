@@ -42,9 +42,10 @@ include("services/resources.php"); //Export api URL?>
                 
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-link">
-                    <a class="btn btn-primary btn-block btn-login" href="nuevaExp.php">Agregar </a>
-                    <a class="btn btn-primary btn-block btn-login" href="reservacionesrecibidas.php">Reservaciones </a>
+                    <a class="btn btn-primary btn-block btn-login" href="nuevaActividad.html">Agregar </a>
+                    <a class="btn btn-primary btn-block btn-login" href="reservacionesrecibidasexp.php">Reservaciones </a>
                     <a class="btn btn-primary btn-block btn-login" href="logout.php">Logout</a>
+                    <a class="btn btn-primary btn-block btn-login" href="editarUsuario.php">Mi cuenta</a>
                 </li>
                     
                 </ul>
@@ -84,7 +85,7 @@ include("services/resources.php"); //Export api URL?>
                         </div>
                         <div class="card-footer">
                             <small>$ <?php echo $data[$i]['precio']; ?></small>
-                            <a href="reservacionExperiencia.php?id_res=<?php echo $data[$i]['id']; ?>" class="pull-right">Reservar!</a>
+                            <a href="eliminarExperiencia.php?id_exp=<?php echo $data[$i]['id']; ?>" class="pull-right">Eliminar</a>
                         </div>
                     </div>
                 </div>

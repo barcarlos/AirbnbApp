@@ -82,11 +82,17 @@
                             </div>
                             <div class="dates">
                                 <div class="start">
-                                    <strong>STARTS</strong> <?php echo $data[$i]['checkin']; ?>
+                                    <strong>STARTS</strong> <?php 
+                                    $aux=str_split($data[$i]['checkin'], 10);
+                                    echo $aux[0];
+                                 ?>
                                     <span></span>
                                 </div>
                                 <div class="ends">
-                                    <strong>ENDS</strong> <?php echo $data[$i]['checkout']; ?>
+                                    <strong>ENDS</strong> <?php 
+                                                                        $aux=str_split($data[$i]['checkout'], 10);
+                                                                        echo $aux[0];
+                                    ?>
                                 </div>
                             </div>
     
