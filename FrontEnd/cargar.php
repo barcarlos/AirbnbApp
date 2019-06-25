@@ -7,7 +7,7 @@ if(isset($_POST["submit"])){
         $imgContenido = addslashes(file_get_contents($image));
         
         //Credenciales Mysql}
-        $Host = '192.168.43.176';
+        $Host = 'localhost';
         $Username = 'carlos';
         $Password = 'qwerty1';
         $dbName = 'airbnb';

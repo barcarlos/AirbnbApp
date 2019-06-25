@@ -7,7 +7,7 @@ include("services/apifunctions.php");
 include("services/resources.php"); //Export api URL
 session_start();
 ?>
-	<title>Registrate</title>
+	<title>Editar perfil</title>
    <!--Made with love by Mutiullah Samim -->
    <meta charset="UTF-8">
     <!--Fontawesome CDN-->
@@ -30,9 +30,9 @@ session_start();
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 		<article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Registrate</h4>
-            <p class="text-center">Crea una cuenta y empieza a buscar aventuras</p>
-            <form action="registro.php" method="post">
+            <h4 class="card-title mt-3 text-center">Editar perfil</h4>
+            <p class="text-center">Actualiza tus datos</p>
+            <form action="editar.php" method="post">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -75,11 +75,11 @@ session_start();
                     <span class="input-group-text"> <i class="fas fa-male"></i> </span>
                  </div>
                 </div>
-               <input class="radio" type="radio"  value="male" name="sexo"><div class="chckbx" style="margin-top: 3px;">Hombre</div>
+               <input class="radio" type="radio"  value="male" name="sexo" <?php if($data[0]['sexo'] == 'M'): ?> checked <?php endif; ?>><div class="chckbx" style="margin-top: 3px;">Hombre</div>
                 <div>
                     <div class="input-group-prepend" style="margin-left: 65">
                     <span class="input-group-text"> <i class="fas fa-female"></i> </span>
-                   <input class="radio" type="radio"  value="female" name="sexo"><div class="chckbx" style="margin-top: 3px;">Mujer</div>
+                   <input class="radio" type="radio"  value="female" name="sexo" <?php if($data[0]['sexo'] == 'F'): ?> checked <?php endif; ?>><div class="chckbx" style="margin-top: 3px;">Mujer</div>
                     </div>
                 </div>
             </div> <!-- form-group// -->
@@ -100,7 +100,7 @@ session_start();
                     <span class="input-group-text"> <i class="fas fa-user-circle"></i> </span>
                 </div>
                 <select class="form-control" id="tipo">
-                    <option disabled selected="">value="<?php echo $data[0]['tipo']?>"</option>
+                    <option disabled selected=""><?php if($data[0]['tipo'] == 1): ?> Anfitrión <?php endif; ?><?php if($data[0]['tipo'] == 2): ?> Huésped <?php endif; ?></option>
                     <option>Anfitrion</option>
                     <option>Huésped</option>
                 </select>
@@ -112,9 +112,8 @@ session_start();
                 <input class="form-control" placeholder="Cambiar contraseña" type="password" name ="contrasena">
             </div> <!-- form-group// -->                                      
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Crear cuenta  </button>
-        </div> <!-- form-group// -->      
-        <p class="text-center">Tienes una cuenta? <a href="iniciarSesion.html">Inicia sesión</a> </p>  
+                <button type="submit" class="btn btn-primary btn-block"> Guardar Cambios  </button>
+        </div> <!-- form-group// -->       
         <input type="text" id="tipoSeleccionado" name="tipo" hidden  >                                                               
         </form>
 </article>

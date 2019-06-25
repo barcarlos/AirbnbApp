@@ -1,0 +1,43 @@
+<?php
+include("services/apifunctions.php");
+include("services/resources.php"); //Export api URL
+//variables de sesion 
+session_start();
+$nombre=$_POST['nombre'];
+$descripcion=$_POST['descripcion'];
+$direccion=$_POST['direccion'];
+$precio=$_POST['precio'];
+$camas=$_POST['camas'];
+$cuartos=$_POST['cuartos'];
+$banos=$_POST['banos'];
+$checkin=$_POST['checkin'];
+$checkout=$_POST['checkout'];
+$url = $apiurl . "departamento/31" ;//. $_SESSION['id']; //concat the api url with the uri of the service
+$arrayAmenidad=preg_split('[,]', $amenidad); //We make an split for getting each amenity 
+$data = array(
+  'nombre' => $nombre,
+  'descripcion' => $descripcion,
+  'ubicacion' => $direccion,
+  'precio_noche' => $precio,
+  'camas' => $camas,
+  'habitaciones' => $cuartos,
+  'banos' => $banos, 
+  'checkin' => $checkin,
+  'checkout' => $checkout,
+
+);
+$res=postapi($data,$url);
+$array = json_decode($res, true);
+$id_departamento=$array[0]['id']; 
+$_SESSION["id_departamento"]=$id_departamento;
+//Now we're gonna insert in amenities table
+$url = $apiurl . "amenidad_departamento/";
+for($i=0;$i<count($arrayAmenidad);$i++){
+  $data2=array(
+    'id_amenidad' => $arrayAmenidad[$i],
+    'id_departamento' => $id_departamento,
+  );
+  $response=postapi($data2,$url);
+}
+header("location:subirImagen.html");
+?>
