@@ -8,7 +8,7 @@ if(isset($_POST["submit"])){
         
         //Credenciales Mysql}
         $Host = '192.168.43.176';
-        $Username = 'root';
+        $Username = 'carlos';
         $Password = 'qwerty1';
         $dbName = 'airbnb';
         

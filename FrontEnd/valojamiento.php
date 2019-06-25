@@ -71,6 +71,7 @@ include("services/resources.php"); //Export api URL?>
                 $data=getDataapi($url) ;
                 for($i=0;$i<count($data);$i++){
                     $_SESSION['imagenes'][]=$data[$i]['id']; 
+                    //echo "<h3>" . $data[$i]['id'] . "</h3>";
                 }
                 //var_dump($_SESSION['id']);
                 for($i=0;$i<count($data);$i++){
